@@ -1,12 +1,11 @@
 import React from 'react';
-import Search from './component/Search';
-// import GooglesMap from './component/GoogleMap';
+import SearchArea from './component/SearchArea';
 import styles from './App.module.scss';
 
 function App() {
   return (
     <div className={styles.App}>
-     <Search />
+     <SearchArea />
      
     </div>
   );
