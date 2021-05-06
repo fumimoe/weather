@@ -31,6 +31,3 @@ const DisplayWeather = (props: any) => {
 
 export default DisplayWeather;
 
-const array = () => {
-    
-}
