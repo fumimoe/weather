@@ -7,7 +7,7 @@ export interface CounterState {
   lng: number;
 }
 const initialState: CounterState = {
-  city: "東京",
+  city: "現在地",
   lat: 35.6761919,
   lng: 139.7690174,
 };
