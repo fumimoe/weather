@@ -9,25 +9,38 @@ const DisplayWeather = (props: any) => {
   console.log(dailyDatas);
 
   return (
-    <div className={styles.displayweather}>
-      {dailyDatas.map((dailyData: any) => {
-          return(
-            <>
-            <p>本日の気温{dailyData.temp.day}</p>
-            <p>最低気温{dailyData.temp.min}</p>
-            <p>最高気温{dailyData.temp.max}</p>
-          </>
-          )
-      
-      })}
-      {weatherData.daily ? (
-        <p>気温：{Math.floor(weatherData.daily.temp - 273.15)}°C</p>
+    <>
+      {weatherData ? (
+        <div className={styles.displayweather}>
+          {dailyDatas.map((dailyData: any, key: number) => {
+            return (
+              <>
+                <p>本日の気温{dailyData.temp.day}</p>
+                <p>最低気温{dailyData.temp.min}</p>
+                <p>最高気温{dailyData.temp.max}</p>
+                <img
+                  src={
+                    dailyDatas
+                      ? "http://openweathermap.org/img/wn/" +
+                        `${dailyDatas.weather[key].icon}` +
+                        ".png"
+                      : "http://openweathermap.org/img/wn/01d.png"
+                  }
+                  alt=""
+                />
+              </>
+            );
+          })}
+        </div>
       ) : (
-        <p></p>
+        <div>
+          <p>本日の気温:</p>
+          <p>最低気温:</p>
+          <p>最高気温:</p>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
 export default DisplayWeather;
-
