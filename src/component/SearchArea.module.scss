@@ -1,0 +1,51 @@
+.form_container {
+  text-align: center;
+}
+
+.valuefield {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid rgb(208, 205, 205);
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-top: 80px;
+}
+
+.submit_btn {
+  margin-left: 10px;
+  padding: 7px 20px;
+  width: 10%;
+  background-color: rgb(7, 148, 242);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.submit_btn:hover {
+  opacity: 0.7;
+}
+
+.weather_area {
+  margin-top: 40px;
+  display: flex;
+}
+
+.display_left {
+  width: 48%;
+  text-align: center;
+}
+
+.display_right {
+  width: 48%;
+}
+
+.today_time_title {
+  color: rgb(245, 154, 93);
+}
+
+.area_title {
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
