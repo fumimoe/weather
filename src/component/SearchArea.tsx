@@ -6,6 +6,7 @@ import axios from "axios";
 import Geocode from "react-geocode";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import DisplayWeather from "./DisplayWeather";
+import Chart from './Chart';
 
 const SearchArea = () => {
   const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const SearchArea = () => {
           <DisplayWeather data={weather} /> </>: null}
         </div>
         <div className={styles.display_right}>
-          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+          <Chart data={weather} />
         </div>
       </div>
     </>

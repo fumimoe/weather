@@ -10,9 +10,6 @@ const DisplayWeather = (props: any) => {
   console.log(dailyDatas);
 
 
-  
-  
-
   return (
     <>
       {dailyDatas ? (
