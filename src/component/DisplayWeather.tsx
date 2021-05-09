@@ -118,4 +118,4 @@ const DisplayWeather = (props: any) => {
   );
 };
 
-export default DisplayWeather;
+export default React.memo(DisplayWeather);

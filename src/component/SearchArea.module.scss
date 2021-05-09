@@ -8,7 +8,7 @@
   border: 1px solid rgb(208, 205, 205);
   border-radius: 10px;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .submit_btn {
@@ -33,10 +33,12 @@
 .display_left {
   width: 48%;
   text-align: center;
+  height: 100%;
 }
 
 .display_right {
   width: 48%;
+  height: 100%;
 }
 
 .today_time_title {

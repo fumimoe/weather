@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
 const Chart = (props: any) => {
   const [nowtimes, setNowTimes] = useState<number[]>([]);
-  const weatherData = props.data;
-  const honlyDatas = weatherData.hourly;
-  console.log(honlyDatas);
-  if (honlyDatas) {
-    let time = [];
-    for (let i = 0; i < 7; i++) {
-      time.push(new Date(honlyDatas[i].dt * 1000).getHours());
-      setNowTimes(time);
+  const [temphourly, setTempHourly] = useState<number[]>([]);
+
+  useEffect(() => {
+    const weatherData =  props.data;
+    const honlyDatas = weatherData.hourly;
+    console.log(honlyDatas);
+    if (honlyDatas) {
+      let timeList = [];
+      let temperature = [];
+      for (let i = 0; i < 7; i++) {
+        timeList.push(new Date(honlyDatas[i].dt * 1000).getHours());
+      }
+      setNowTimes(timeList);
+
+      for (let i = 0; i < 7; i++) {
+        temperature.push(Math.fround(honlyDatas[i].temp - 273.15));
+      }
+      setTempHourly(temperature);
     }
-  }
+  }, [props.data]);
+  console.log(nowtimes);
+  console.log(temphourly);
 
   interface Datas {
-    labels: string[];
+    labels: number[];
     datasets: [
       {
         label: string;
@@ -28,22 +40,48 @@ const Chart = (props: any) => {
   }
 
   const data: Datas = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fir", "Sat", "Sun"],
+    labels: [...nowtimes],
     datasets: [
       {
-        label: "Demo line plot",
-        backgroundColor: "#008080",
-        borderColor: "#7fffd4",
-        pointBorderWidth: 10,
-        data: [5, 6, 9, 15, 30, 40, 80],
+        label: "1時間ごとの気温",
+        backgroundColor: "#e6e6e6",
+        borderColor: "#2e2d2d",
+        pointBorderWidth: 2,
+        data: [...temphourly],
       },
     ],
   };
+
+  const  graphOption = {
+    scales: {
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "時刻",
+          },
+        },
+      ],
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "平均気温(℃)",
+            ticks: {
+              stepSize: 1,
+              fontColor: "blue",
+              fontSize: 14,
+            },
+          },
+        },
+      ],
+    },
+  };
   return (
     <div>
-      <Line type={Line} data={data} />
+      <Line type={Line} height={100} width={100} data={data} options={graphOption} />
     </div>
   );
 };
 
-export default Chart;
+export default　React.memo(Chart);
