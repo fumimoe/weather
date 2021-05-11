@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import styles from "./SearchArea.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocationCity, selectCity } from "../features/api/apiSlice";
