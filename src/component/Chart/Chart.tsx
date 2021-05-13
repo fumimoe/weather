@@ -79,7 +79,7 @@ const Chart = (props: any) => {
   };
   return (
     <div>
-      <Line type={Line} height={100} width={100} data={data} options={graphOption} />
+      <Line type={Line} height={50} width={50} data={data} options={graphOption} />
     </div>
   );
 };

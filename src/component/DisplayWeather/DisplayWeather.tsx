@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./DisplayWeather.module.scss";
-import InitialWeather from './initialweather/InitialWeather'
+import InitialWeather from '../initialweather/InitialWeather'
 
 const DisplayWeather = (props: any) => {
   const weatherData = props.data;
@@ -52,10 +52,12 @@ const DisplayWeather = (props: any) => {
                   湿度:{todayDatas.humidity}%
                 </div>
               </div>
+              <p className={styles.title_label}>8日間の天気</p>
             </div>
           </div>
 
           <div className={styles.week_weather_container}>
+            
             {dailyDatas.map((dailyData: any, index: number) => {
               return (
                 <div className={styles.each_weather}>
@@ -106,6 +108,7 @@ const DisplayWeather = (props: any) => {
                 <div className={styles.today_Details_info}>気圧:--hPa</div>
                 <div className={styles.today_Details_info}>湿度:--%</div>
               </div>
+              <p className={styles.title_label}>8日間の天気</p>
             </div>
           </div>
 

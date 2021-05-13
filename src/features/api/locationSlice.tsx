@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
 
-export interface CounterState {
+export interface LocationState {
   city: string;
   lat: number;
   lng: number;
 }
-const initialState: CounterState = {
+const initialState: LocationState = {
   city: "現在地",
   lat: 35.6761919,
   lng: 139.7690174,

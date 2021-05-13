@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import styles from "./SearchArea.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setLocationCity, selectCity } from "../features/api/apiSlice";
+import { setLocationCity, selectCity } from "../../features/api/locationSlice";
 import axios from "axios";
 import Geocode from "react-geocode";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import DisplayWeather from "./DisplayWeather";
-import Chart from "./Chart";
+import DisplayWeather from "../DisplayWeather/DisplayWeather";
+import Chart from "../Chart/Chart";
 
 const SearchArea = () => {
   const dispatch = useDispatch();
@@ -61,8 +61,8 @@ const SearchArea = () => {
   };
 
   const containerStyle = {
-    width: "400px",
-    height: "250px",
+    width: "300px",
+    height: "200px",
     margin: "0 auto",
   };
 
@@ -75,6 +75,7 @@ const SearchArea = () => {
     <>
       <div className={styles.container}>
         <div className={styles.form_container}>
+          <p className={styles.label_title}>都市名</p>
           <form action="">
             <input
               type="text"
@@ -117,6 +118,7 @@ const SearchArea = () => {
           )}
         </div>
         <div className={styles.display_right}>
+          <p className={styles.label}>1時間ごとの天気</p>
           <Chart data={weather} />
         </div>
       </div>

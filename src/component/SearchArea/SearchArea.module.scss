@@ -1,5 +1,6 @@
 .form_container {
   text-align: center;
+  margin-top: 40px;
 }
 
 .valuefield {
@@ -8,7 +9,7 @@
   border: 1px solid rgb(208, 205, 205);
   border-radius: 10px;
   margin-bottom: 20px;
-  margin-top: 10px;
+  
 }
 
 .submit_btn {
@@ -26,7 +27,7 @@
 }
 
 .weather_area {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
 }
 
@@ -43,11 +44,33 @@
 
 .today_time_title {
   color: rgb(245, 154, 93);
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .area_title {
   font-weight: bold;
   font-size: 28px;
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+
+
+.label_title{
+  margin: 0;
+  text-align: left;
+  position: relative;
+  left: 230px;
+  font-weight: bold;
+  
+}
+
+.label{
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(245, 154, 93);
+  text-align: center;
 }
