@@ -32,7 +32,7 @@ const SearchArea = () => {
 
         await axios
           .get(
-            `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&lang=ja&appid=${APIKEY_GEOCODE}`
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&lang=ja&appid=${APIKEY_GEOCODE}`
           )
 
           .then((response) => {
