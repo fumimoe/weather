@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SearchArea.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocationCity, selectCity } from "../../features/api/locationSlice";
@@ -20,6 +20,47 @@ const SearchArea = () => {
   let today = new Date();
   let month = today.getMonth() + 1;
   let day = today.getDate();
+
+  const [center, setCenter] = useState({ lat: 35.6761919, lng: 139.7690174 });
+  const [currentPosition, setCurrentPosition] = useState({});
+
+  const firstlocation = async () => {
+    await axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${center.lat}&lon=${center.lng}&lang=ja&appid=${APIKEY_GEOCODE}`
+      )
+      .then((response) => {
+        const data: any = response.data;
+        setWeather(data);
+        console.log(weather);
+        console.log("status:", response.status);
+      })
+      .catch((err) => {
+        console.log("err:", err);
+      });
+  };
+
+  const success = (data: any) => {
+    const currentPosition = {
+      lat: data.coords.latitude,
+      lng: data.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+    setCenter(currentPosition);
+    firstlocation();
+  };
+
+  const error = (data: any) => {
+    const currentPosition = {
+      lat: 34.673542,
+      lng: 135.433338,
+    };
+    setCurrentPosition(currentPosition);
+    setCenter(currentPosition);
+  };
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }, []);
 
   const weatherData = async (e: any) => {
     dispatch(setLocationCity(city));
@@ -66,11 +107,6 @@ const SearchArea = () => {
     margin: "0 auto",
   };
 
-  const center = {
-    lat: latstate,
-    lng: lngstate,
-  };
-
   return (
     <>
       <div className={styles.container}>
@@ -99,7 +135,7 @@ const SearchArea = () => {
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
-              zoom={13}
+              zoom={8}
             ></GoogleMap>
           </LoadScript>
         </div>
